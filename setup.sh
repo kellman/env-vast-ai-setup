@@ -5,6 +5,7 @@
 set -e
 
 ROOT="/workspace"
+REPO="env-vast-ai-setup"
 cd $ROOT
 
 echo "Starting machine provisioning..."
@@ -21,10 +22,6 @@ curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-
 tar -xf $ROOT/vscode_cli.tar.gz
 rm $ROOT/vscode_cli.tar.gz
 
-# Install uv and python dependencies
-pip install uv
-uv pip install matplotlib
-
 # Install GitHub CLI
 apt-get install -y gh
 gh auth login
@@ -36,8 +33,13 @@ git config --global user.name "Michael Kellman"
 # Verify installations
 echo "Verifying installations..."
 nvidia-smi
-python3 -c "import torch; print(f'PyTorch version: {torch.__version__}')"
 code --version
+
+# Install uv and python dependencies
+pip install uv
+uv venv --no-project
+source $ROOT/.venv/bin/activate
+pip install -r $ROOT/$REPO/uv/requirements.txt
 
 # Clone the working repositories
 git clone https://github.com/kellman/deepul.git

@@ -15,7 +15,7 @@ apt-get update
 apt-get upgrade -y
 
 # Install Python and pip
-apt-get install -y python3 python3-pip
+apt-get install -y python3.12 python3-pip
 
 # Install VSCode tunnel
 curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output $ROOT/vscode_cli.tar.gz
@@ -37,9 +37,9 @@ code --version
 
 # Install uv and python dependencies
 pip install uv
-uv venv --no-project
+uv venv --no-project --python 3.12
 source $ROOT/.venv/bin/activate
-pip install -r $ROOT/$REPO/uv/requirements.txt
+uv pip install -r $ROOT/$REPO/uv/requirements.txt
 
 # Clone the working repositories
 git clone https://github.com/kellman/deepul.git

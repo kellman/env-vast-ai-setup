@@ -4,6 +4,9 @@
 
 set -e
 
+ROOT="/workspace"
+cd $ROOT
+
 echo "Starting machine provisioning..."
 
 # Update system packages
@@ -14,14 +17,12 @@ apt-get upgrade -y
 apt-get install -y python3 python3-pip
 
 # Install VSCode tunnel
-curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz
-tar -xf vscode_cli.tar.gz
-rm vscode_cli.tar.gz
+curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output $ROOT/vscode_cli.tar.gz
+tar -xf $ROOT/vscode_cli.tar.gz
+rm $ROOT/vscode_cli.tar.gz
 
 # Install GitHub CLI
 apt-get install -y gh
-
-# Login to GitHub CLI
 gh auth login
 
 # Configure github stuff
@@ -36,5 +37,7 @@ code --version
 
 # Clone the working repositories
 git clone https://github.com/kellman/deepul.git
+unzip -qq $ROOT/deepul/homeworks/hw1/data/hw1_data.zip -d $ROOT/deepul/homeworks/hw1/data/
+pip install $ROOT/deepul
 
 echo "Provisioning complete!"

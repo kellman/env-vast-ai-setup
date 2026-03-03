@@ -21,6 +21,10 @@ curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-
 tar -xf $ROOT/vscode_cli.tar.gz
 rm $ROOT/vscode_cli.tar.gz
 
+# Install uv and python dependencies
+pip install uv
+uv pip install matplotlib
+
 # Install GitHub CLI
 apt-get install -y gh
 gh auth login

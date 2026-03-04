@@ -33,7 +33,7 @@ git config --global user.name "Michael Kellman"
 # Verify installations
 echo "Verifying installations..."
 nvidia-smi
-code --version
+./code --version
 
 # Install uv and python dependencies
 pip install uv

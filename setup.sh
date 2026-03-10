@@ -38,7 +38,7 @@ nvidia-smi
 # Install uv and python dependencies
 pip install uv
 uv venv --no-project --python 3.12
-source $ROOT/.venv/bin/activate
+. $ROOT/.venv/bin/activate
 uv pip install -r $ROOT/$REPO/uv/requirements.txt
 
 # Clone the working repositories

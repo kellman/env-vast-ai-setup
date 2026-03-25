@@ -36,7 +36,7 @@ uv pip install -r $ROOT/$REPO/uv/requirements.txt
 # Clone the working repositories
 git clone https://github.com/kellman/deepul.git
 unzip -qq $ROOT/deepul/homeworks/hw1/data/hw1_data.zip -d $ROOT/deepul/homeworks/hw1/data/
-pip install $ROOT/deepul
+uv pip install $ROOT/deepul
 
 # Install GitHub CLI
 apt-get install -y gh
